@@ -1,0 +1,108 @@
+<h1 mat-dialog-title>Add New Task</h1>
+<div class="container">
+    <div mat-dialog-content>
+        <form [formGroup]="employeeForm">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input formControlName="firstname" matInput type="text" placeholder="Enter your task here" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline" class="col-6">
+                        <mat-label>Last Name</mat-label>
+                        <input formControlName="lastname" matInput placeholder="Enter your task here" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-heading">
+                    <h6 class="text-secondary fst-italic">Personal Information</h6>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <label for="profile" class="form-label">Profile Image</label>
+                    <input type="file" formControlName="avatar" class="avatar" (change)="onFileSelect($event)" name="avatar" accept="image/png, image/jpeg" #fileInput class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <mat-form-field appearance="outline">
+                        <mat-label>DOB</mat-label>
+                        <input formControlName="date" matInput [matDatepicker]="picker" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col-5 offset-1">
+                    <mat-radio-group formControlName="gender" aria-label="Enter Gender" class="row">
+                        <mat-radio-button value="male" class="col-6">Male</mat-radio-button>
+                        <mat-radio-button value="female" class="col-6">Female</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field appearance="outline">
+                    <mat-label>Marital Status</mat-label>
+                    <mat-select formControlName="maritalStatus" placeholder="Select your marital status" required>
+                        <mat-option value="">Select an option</mat-option>
+                        <mat-option *ngFor="let curr_stat of Marital_status" value="{{ curr_stat.val }}" id="{{ curr_stat.val }}">{{ curr_stat.desc }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="col form-heading">
+                    <h6 class="text-secondary fst-italic">Education Information</h6>
+                </div>
+            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your curent or last degree</mat-label>
+                <mat-select formControlName="education" placeholder="Select your degree here" required>
+                    <mat-option value="">Select an option</mat-option>
+                    <mat-option *ngFor="let educ of Employee_Options" value="{{ educ.val }}" id="{{ educ.val }}">{{ educ.desc }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your School Name</mat-label>
+                <input formControlName="university" matInput required placeholder="School">
+            </mat-form-field>
+            <div class="row">
+                <div class="col form-heading">
+                    <h6 class="text-secondary fst-italic">Job Information</h6>
+                </div>
+            </div>
+            <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input formControlName="company" matInput required placeholder="Company Name">
+            </mat-form-field>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Job Experience</mat-label>
+                        <input formControlName="experience" matInput required type="number" placeholder="Job Experience(yrs)">
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Current CTC</mat-label>
+                        <input formControlName="ctc" matInput required type="number" placeholder="CTC (LPA)">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col form-heading">
+                    <h6 class="text-secondary fst-italic">Additional Information</h6>
+                </div>
+            </div>
+            <div style="font-weight:bolder;">Additional Information (Links,etc.):</div>
+            <textarea name="links" rows="5" cols="70"></textarea>
+        </form>
+    </div>
+    <div mat-dialog-action [align] = "'end'">
+        <button type="button" class="btn btn-danger mx-2" style="font-weight:bold;" (click)="closeDialog()">Close</button>
+        <button type="submit" class="btn btn-primary mx-2" style="font-weight:bold;" (click)="addEmployee()">{{ actionBtn }}</button>
+    </div>
+</div>
