@@ -22,12 +22,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EmployeeDataComponent } from './employee-data/employee-data.component';
+import { AbcComponent } from './abc/abc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddEmployeeComponent,
-    EmployeeDataComponent
+    EmployeeDataComponent,
+    AbcComponent
   ],
   imports: [
     BrowserModule,

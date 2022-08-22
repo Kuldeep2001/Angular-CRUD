@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AbcComponent } from './abc/abc.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EmployeeDataComponent } from './employee-data/employee-data.component';
+// import { AbcComponent } from './abc.component';
+
 
 @Component({
   selector: 'app-root',
@@ -20,6 +23,15 @@ export class AppComponent implements OnInit{
 
   openDialog() {
     this.dialog.open(AddEmployeeComponent, {
+      width:'50%',
+    }).afterClosed().subscribe(val => {
+      if(val === "Save")
+        console.log(val);
+    });
+  }
+  openABC()
+  {
+    this.dialog.open(AbcComponent, {
       width:'50%',
     }).afterClosed().subscribe(val => {
       if(val === "Save")
